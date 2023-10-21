@@ -37,7 +37,7 @@
   opacity: 0.5;
 }
 #form .form__element {
-  width: 100%;
+  width: 90%;
   height: 100%;
   border: none;
   background-color: rgba(211, 211, 211, 0.4196078431);
@@ -47,12 +47,54 @@
   font-size: 18px;
 }
 
+.active {
+  margin-top: 10px;
+  width: 100%;
+  height: 5px;
+  border-radius: 8px;
+  background-color: red;
+}
+
 #redirects {
   display: flex;
+  margin-left: 85px;
 }
 #redirects .icon {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-right: 30px;
+}
+#redirects .icon__img {
+  width: 30px;
+  height: 30px;
+}
+#main #post {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../assets/images/Screenshot 2023-10-21 at 11.38.54.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#main #post .post__content {
+  margin-left: 80px;
+}
+#main #post .post__content-title {
+  font-size: 24px;
+  line-height: 35px;
+  letter-spacing: 0.5px;
+}
+#main #post .post__content-btn {
+  border: none;
+  padding: 7px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #3c3b3b;
+  color: #fff;
 }
 
 /*# sourceMappingURL=home.css.map */

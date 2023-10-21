@@ -11,6 +11,10 @@ input {
   outline: none;
 }
 
+body {
+  margin: 0;
+}
+
 html, body {
   font-family: "Poppins", sans-serif;
 }
