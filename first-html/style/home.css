@@ -97,4 +97,46 @@
   color: #fff;
 }
 
+#top-10 {
+  margin-top: 50px;
+}
+#top-10 .products {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+#top-10 .products .product {
+  width: 30%;
+  height: 450px;
+}
+#top-10 .products .product:hover {
+  cursor: pointer;
+}
+#top-10 .products .product__img {
+  width: 100%;
+  position: relative;
+}
+#top-10 .products .product__img-element {
+  width: 100%;
+  border-radius: 8px;
+}
+#top-10 .products .product__img-btn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  border: none;
+  border-radius: 50%;
+}
+#top-10 .products .product__img-btn-element {
+  width: 100%;
+  height: 100%;
+}
+#top-10 .products .product__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /*# sourceMappingURL=home.css.map */
