@@ -161,9 +161,6 @@
   margin-top: 50px;
 
   .products {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 80px;
 
     @include mobile {
       flex-wrap: wrap;
@@ -171,14 +168,7 @@
     }
 
     .product {
-      width: 30%;
       height: 450px;
-      //margin-right: 20px;
-
-      @include mobile {
-        margin-bottom: 50px;
-        width: 100%;
-      }
 
       &:hover {
         cursor: pointer;
@@ -190,6 +180,7 @@
 
       &__img {
         width: 100%;
+        height: 100%;
         position: relative;
         animation-name: img-move;
         animation-delay: 2s;
@@ -203,6 +194,7 @@
 
         &-element {
           width: 100%;
+          height: 100%;
           border-radius: 8px;
 
           @include mobile {
