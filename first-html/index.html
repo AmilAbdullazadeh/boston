@@ -1,287 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/home.css" />
+    <title>Modal Popup</title>
+  </head>
+  <body>
+    <section class="modal hidden">
+      <div class="flex">
+        <img src="user.png" width="50px" height="50px" alt="user" />
+        <button class="btn-close">⨉</button>
+      </div>
+      <div>
+        <h3>Stay in touch</h3>
+        <p>
+          This is a dummy newsletter form so don't bother trying to test it. Not
+          that I expect you to, anyways.
+        </p>
+      </div>
+      <input type="email" id="email" placeholder="brendaneich@js.com" />
+      <button class="btn">Submit</button>
+    </section>
 
-    <!--  bootstrap  -->
-    <link href="./style/ui-kit/bootstrap.min.css"
-          rel="stylesheet">
+    <div class="overlay hidden"></div>
+    <button class="btn btn-open">Open Modal</button>
 
-
-    <!--  google fonts  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="./style/global.css">
-    <link rel="stylesheet" href="./style/home.css">
-    <title>Home page</title>
-</head>
-<body>
-
-    <header id="header" >
-
-        <div id="logo">
-            <img class="logo" src="./assets/icons/logo.svg" alt="Logo">
-        </div>
-
-        <nav id="navigation"  >
-            <ul class="navigation__list" >
-                <li class="navigation__list-item" >
-                    <a class="navigation__list-link" href="">Men</a>
-                </li>
-                <li class="navigation__list-item" >
-                    <a class="navigation__list-link" href="">Women</a>
-                </li>
-                <li class="navigation__list-item" >
-                    <a class="navigation__list-link" href="">Men</a>
-                </li>
-                <li class="navigation__list-item" >
-                    <a class="navigation__list-link" href="">Men</a>
-                </li>
-            </ul>
-        </nav>
-
-        <form id="form" >
-            <img class="form__img" src="./assets/icons/search.svg" alt="Search">
-            <input type="text" class="form__element" placeholder="Search for products" >
-        </form>
-
-        <div id="redirects">
-            <div class="icon" >
-                <img class="icon__img" src="./assets/icons/user.svg" alt="User icon">
-                <span class="icon__text" >Profile</span>
-
-                <span class="active" ></span>
-            </div>
-            <div class="icon" >
-                <img class="icon__img" src="./assets/icons/wishlist.svg" alt="Wishlist icon">
-                <span class="icon__text" >Wishlist</span>
-            </div>
-            <div class="icon" >
-                <img class="icon__img" src="./assets/icons/bag.svg" alt="Bag icon">
-                <span class="icon__text" >Bag</span>
-            </div>
-        </div>
-
-    </header>
-
-    <main id="main" >
-
-        <section id="post">
-
-            <div class="post__content">
-
-                <h3 class="post__content-title" >
-                    Street9 Brediee <br>
-                    Overlay Crop Shoulder T-shirt
-                </h3>
-                <button class="post__content-btn" >
-                    Add to cart
-                </button>
-
-            </div>
-
-        </section>
-
-        <section id="top-10" class="container" >
-
-            <div class="products row row-gap-5">
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                            class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title fs-5" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                             20.00
-                        </b>
-                    </div>
-
-                </div>
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                                class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title fs-5" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                             20.00
-                        </b>
-                    </div>
-
-                </div>
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                                class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title fs-5" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                             20.00
-                        </b>
-                    </div>
-
-                </div>
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                                class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                            20.00
-                        </b>
-                    </div>
-
-                </div>
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                                class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                            20.00
-                        </b>
-                    </div>
-
-                </div>
-
-                <div class="product col-12 col-md-4">
-
-                    <div class="product__img">
-                        <img
-                                class="product__img-element"
-                                src="./assets/images/clothing.webp"
-                                alt="Product"
-                        >
-                        <button
-                                class="product__img-btn"
-                        >
-                            <img
-                                    class="product__img-btn-element"
-                                    src="./assets/icons/wishlist.svg"
-                                    alt=""
-                            >
-                        </button>
-                    </div>
-
-                    <div class="product__content">
-                        <h4 class="product__content-title" >
-                            Overlay Crop Shoulder T-shirt
-                        </h4>
-                        <b class="product__content-price" >
-                            20.00
-                        </b>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <script src="./style/ui-kit/boostrap.min.js"
-    ></script>
-
-
-</body>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
