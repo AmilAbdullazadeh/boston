@@ -1,19 +1,31 @@
-var overlay = document.querySelector(".overlay");
-var modal = document.querySelector(".modal");
-var openBtn = document.querySelector(".btn-open");
-var closeBtn = document.querySelector(".btn-close");
+var slides = document.querySelectorAll(".slide")
+var nextBtn = document.querySelector(".btn-next")
+var prevBtn = document.querySelector(".btn-prev")
 
-function openModal() {
-    modal.classList.remove("hidden")
-    overlay.classList.remove("hidden")
-}
+var currentIndex = 0;
+var maxNumber = slides.length - 1;
 
-function closeModal() {
-    modal.classList.add("hidden")
-    overlay.classList.add("hidden")
-}
+nextBtn.addEventListener("click", function () {
+    if (currentIndex === maxNumber) {
+        currentIndex = 0
+    } else {
+        currentIndex ++
+    }
+    
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+    });
 
-openBtn.addEventListener("click", openModal);
-closeBtn.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
+})
 
+prevBtn.addEventListener("click", () => {
+    if (currentIndex === 0) {
+        currentIndex = maxNumber
+    } else {
+        currentIndex --
+    }
+
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+    });
+})
