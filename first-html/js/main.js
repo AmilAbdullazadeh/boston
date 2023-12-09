@@ -1,31 +1,26 @@
-var slides = document.querySelectorAll(".slide")
-var nextBtn = document.querySelector(".btn-next")
-var prevBtn = document.querySelector(".btn-prev")
-
-var currentIndex = 0;
-var maxNumber = slides.length - 1;
-
-nextBtn.addEventListener("click", function () {
-    if (currentIndex === maxNumber) {
-        currentIndex = 0
-    } else {
-        currentIndex ++
+// vribale with welector
+const list = document.querySelector("#infinite-list");
+var itemNumber = 0
+// Add 20 items.
+function loadItems() {
+    for (let i = 1; i <= 10; i++) {
+        itemNumber ++
+        const element = document.createElement('li')
+        element.innerText = `${itemNumber} - indexli li elementi`;
+        list.appendChild(element)
     }
-    
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-    });
+}
 
-})
-
-prevBtn.addEventListener("click", () => {
-    if (currentIndex === 0) {
-        currentIndex = maxNumber
-    } else {
-        currentIndex --
+// Detect when scrolled to bottom.
+// scrollTop; // scrollHeight; // clientHeight
+list.addEventListener("scroll", () => {
+    console.log(list.scrollTop, "scrollTop");
+    console.log(list.scrollHeight, "scrollHeight");
+    console.log(list.clientHeight, "clientHeight");
+    if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+        loadItems();
     }
+});
 
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-    });
-})
+// Initially load some items.
+loadItems()
