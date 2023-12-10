@@ -1,26 +1,21 @@
-// vribale with welector
-const list = document.querySelector("#infinite-list");
-var itemNumber = 0
-// Add 20 items.
-function loadItems() {
-    for (let i = 1; i <= 10; i++) {
-        itemNumber ++
-        const element = document.createElement('li')
-        element.innerText = `${itemNumber} - indexli li elementi`;
-        list.appendChild(element)
+const refreshBtn = document.getElementById("refresh")
+const toggleBtn = document.getElementById("toggle")
+const theme = localStorage.getItem("theme")
+
+theme === "dark" && document.body.classList.add("dark");
+
+toggleBtn.addEventListener("click", toggleMode);
+refreshBtn.addEventListener("click", reload)
+
+function toggleMode() { 
+    document.body.classList.toggle("dark");
+    if (theme === "dark") {
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
     }
 }
-
-// Detect when scrolled to bottom.
-// scrollTop; // scrollHeight; // clientHeight
-list.addEventListener("scroll", () => {
-    console.log(list.scrollTop, "scrollTop");
-    console.log(list.scrollHeight, "scrollHeight");
-    console.log(list.clientHeight, "clientHeight");
-    if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
-        loadItems();
-    }
-});
-
-// Initially load some items.
-loadItems()
+ 
+function reload() {
+    window.location.reload()
+}
