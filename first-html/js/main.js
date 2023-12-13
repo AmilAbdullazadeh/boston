@@ -1,21 +1,14 @@
-const refreshBtn = document.getElementById("refresh")
-const toggleBtn = document.getElementById("toggle")
-const theme = localStorage.getItem("theme")
+const menuBar = document.getElementById("menu-bar");
+const nav = document.getElementById("nav");
+const menuBg = document.getElementById("menu-bg");
 
-theme === "dark" && document.body.classList.add("dark");
-
-toggleBtn.addEventListener("click", toggleMode);
-refreshBtn.addEventListener("click", reload)
-
-function toggleMode() { 
-    document.body.classList.toggle("dark");
-    if (theme === "dark") {
-      localStorage.setItem("theme", "light");
-    } else {
-      localStorage.setItem("theme", "dark");
-    }
+function toggle(element, className) {
+  // debugger
+  element.classList.toggle(className);
 }
- 
-function reload() {
-    window.location.reload()
-}
+
+menuBar.addEventListener("click", toggle(menuBar, "change"));
+nav.addEventListener("click", toggle(nav, "change"));
+menuBg.addEventListener("click", toggle(menuBg, "change-bg"));
+
+//if > else > (class += className), (classList.add, classList.remove)
