@@ -1,39 +1,98 @@
-document.getElementById('registerForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+const arr = [
+  {
+    name: "Lizard",
+    img: "lizard.png",
+  },
+  {
+    name: "Paper",
+    img: "paper.png",
+  },
+  {
+    name: "Rock",
+    img: "rock.png",
+  },
+  {
+    name: "Scissor",
+    img: "scissor.png",
+  },
+  {
+    name: "Spock",
+    img: "spock.png",
+  },
+];
 
-  var message = document.getElementById('message')
+const imageFolderPath = "assets";
 
-  var firstname = document.getElementById('firstname').value
-  var email = document.getElementById('email').value
-  var password = document.getElementById('password').value
-  var phone = document.getElementById('phone').value
-  var comments = document.getElementById('comments').value
-  var country = document.getElementById('country').value
+const rules = {
+  Lizard: ["Spock", "Paper"],
 
-  var genders = document.querySelectorAll("input[name='gender']:checked")
-  var gender = genders.length > 0 ? genders[0].value : ''
+  Paper: ["Rock", "Spock"],
 
-  var interests = document.querySelectorAll("input[name='interests']:checked")
-  var interest = Array.from(interests).map(item => item.value)
+  Rock: ["Lizard", "Scissor"],
 
-  if (
-      firstname.trim() === '' ||
-      email.trim() === '' ||
-      password.trim() === '' ||
-      phone.trim() === '' ||
-      comments.trim() === '' ||
-      country.trim() === '' ||
-      gender.trim() === '' ||
-      interest.length === 0
-  ) {
-    message.textContent = 'Bu saheni bos saxlamayin'
-    message.style.color = 'red'
-    return;
-  }
+  Scissor: ["Paper", "Lizard"],
 
-  if (!email.includes('@')) {
-    message.textContent = 'Daxil edilen format duzgun deyildir'
-    message.style.color = 'red'
-    return;
-  }
-})
+  Spock: ["Scissor", "Rock"],
+};
+
+const playerOptions = document.querySelectorAll(
+  "#player1 .available-options .option"
+);
+
+const botOptions = document.querySelectorAll(
+  "#player2 .available-options .option"
+);
+
+const playerShowArea = document.querySelector(
+  "#player1 .selected-option .option"
+);
+
+const botShowArea = document.querySelector("#player2 .selected-option .option");
+
+const player1Score = document.querySelector("#player1-score");
+const player2Score = document.querySelector("#player2-score");
+
+const roundMessage = document.querySelector("#round-message");
+
+playerOptions.forEach((e) => {
+  e.addEventListener("click", () => {
+    play(e);
+  });
+});
+
+function play(e) {
+  const player = arr[e.dataset.index];
+  const length = arr.length;
+  const botIndex = Math.floor(Math.random() * length);
+  const bot = arr[botIndex];
+
+  showPlayerOption(playerShowArea, player);
+  showPlayerOption(botShowArea, bot);
+}
+
+function generateImgElement(player) {
+  const img = document.createElement("img");
+  img.src = `${imageFolderPath}/${player.img}`;
+  img.alt = `${player.name}`;
+  img.title = `${player.name}`;
+  return img;
+}
+
+function showPlayerOption(showArea, player) {
+  const img = generateImgElement(player);
+
+  showArea.innerHTML = "";
+  showArea.appendChild(img);
+}
+
+// reset
+
+// highlightSelectedOption
+
+// showMessage
+
+//! Claculate function for player 1, player 2 scores (calculateScore with player1, player2)
+
+//! Change the score (addScore with player)
+
+//TODO:: *** confity, alert message, storage score, if the difference is 15 and biger, then reset game and new game start, if I want to add a third player option add it ***
