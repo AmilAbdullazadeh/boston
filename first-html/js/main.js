@@ -1,30 +1,66 @@
-// import { BASE_URL, DEFAULT_QUERY } from "./config";
-const NASA_API_KEY = "yJwx3NLHdwWnIxvVXHSp7bUyXidnqanuiHaLIeYC";
-const BASE_URL = "https://api.nasa.gov/planetary/apod";
-const DEFAULT_QUERY = `?api_key=${NASA_API_KEY}`;
+let form = document.querySelector('#appealsForm');
+let message = document.querySelector('#messageDisplay')
 
-const title = document.querySelector("#title");
-const date = document.querySelector("#date");
-const picture = document.querySelector("#picture");
-const explanation = document.querySelector("#explanation");
+const baseUrl = 'https://jsonplaceholder.typicode.com/posts'
 
-
-// 2. Create a function called fetchNASAData
-const fetchNASAData = async () => {
-  const response = await fetch(`${BASE_URL}${DEFAULT_QUERY}`, {
-    method: "GET"
-  })
-  const data = await response.json()
-  displayData(data)
+let messageData = {
+    img: '',
+    title: '',
+    content: ''
 }
 
-// 3. Call the function
-fetchNASAData()
+function visibleMessage() {
+    form.reset()
 
-// 1. Create a function called fetchNASAData
-function displayData(data) {
-  title.textContent = data?.title
-  date.textContent = data.date
-  picture.src = data.hdurl
-  explanation.textContent = data.explanation
+    form.style.display = 'none'
+    message.style.display = 'block'
+
+    setTimeout(() => {
+        form.style.display = 'block'
+        message.style.display = 'none'
+    }, 5000)
 }
+
+function messageDisplay(data) {
+    let img = document.querySelector('.message-img')
+    let title = document.querySelector('.message-title')
+    let content = document.querySelector('.message-content')
+
+    img.src = data.img
+    title.textContent = data.title
+    content.textContent = data.content
+
+    visibleMessage()
+}
+
+function submit(e) {
+    e.preventDefault()
+
+    let form = this
+    let formData = new FormData(form)
+
+    fetch(baseUrl, {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        if (response.status === 201) {
+            return response.json()
+        } else {
+            throw new Error('Server wasnt able to process your request')
+        }
+    })
+        .then(data => {
+            messageData.img = './assets/images/success_icon.svg'
+            messageData.title = 'Müraciətiniz uğurla göndərildi!'
+            messageData.content = 'Sizinlə tezliklə əlaqə saxlayacağıq'
+            messageDisplay(messageData)
+        })
+        .catch(error => {
+            messageData.img = './assets/images/error_icon.svg'
+            messageData.title = 'Xəta baş verdi'
+            messageData.content = 'Zəhmət olmasa yenidən cəhd edin'
+            messageDisplay(data)
+        })
+}
+
+form.addEventListener('submit', submit)
