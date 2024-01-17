@@ -10,59 +10,12 @@
   </head>
   <body>
 
-  <div class="container">
-    <div class="card mt-5">
-      <div class="card-body">
-        <h5 class="card-title text-center">Müraciət Formu</h5>
-        <!-- Form starts here -->
-        <form id="appealsForm">
-          <!-- Name -->
-          <div class="form-group">
-            <input type="text" class="form-control" name="name" id="name" placeholder="Ad və soyad*" >
-          </div>
-          <!-- Email -->
-          <div class="form-group">
-            <input type="email" class="form-control" name="email" id="email" placeholder="E-poçt ünvanı">
-          </div>
-          <!-- Phone -->
-          <div class="form-group">
-            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Mobil nömrə*" >
-          </div>
-          <!-- Offer Type -->
-          <div class="form-group">
-            <select class="form-control" name="offerType" id="offerType" >
-              <option>Təklif növü*</option>
-              <option value="muracet">Təklif et</option>
-              <option value="sikayet">Şikayət et</option>
-              <option value="partner">Partnyor Ol!</option>
-            </select>
-          </div>
-          <!-- File Upload -->
-          <div class="form-group">
-            <label for="file" class="btn btn-outline-secondary">Fayl əlavə et</label>
-            <input type="file" class="form-control-file" name="file" id="file" hidden accept="image/png, image/jpg, image/gif, image/svg+xml" >
-          </div>
-          <!-- Content -->
-          <div class="form-group">
-            <textarea class="form-control" name="content" id="content" rows="3" placeholder="Müraciətin məzmunu*" ></textarea>
-          </div>
-          <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary btn-block">Göndər</button>
-        </form>
-        <!-- Message Display -->
-        <div id="messageDisplay" style="display: none" >
-          <div style="text-align: center;">
-            <img class="message-img" src="" alt="Success"/>
-            <h3 class="message-title" ></h3>
-            <p class="message-content" ></p>
-          </div>
-        </div>
-      </div>
+    <div class="radio-btn">
+      <div class="radio-inner"></div>
     </div>
-  </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
