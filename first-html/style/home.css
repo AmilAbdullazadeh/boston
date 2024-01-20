@@ -1,136 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: none;
   outline: none;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #f8f6f6;
-  min-height: 100vh;
-  font-family: "montserrat", sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  min-height: 100vh;
+  background: #fbba08;
 }
 
-input,
-textarea,
-button {
-  font-family: inherit;
-}
-
-.container {
-  background-color: #f8f6f6;
-  border-radius: 6px;
-  box-shadow: 0 0 25px 5px rgba(82, 86, 94, 0.2);
+.wrapper {
+  background: #222;
+  width: 28.25rem;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapper .emoji {
+  margin-bottom: 15px;
+}
+.wrapper .emoji img {
+  width: 100px;
+  height: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.color-preview {
-  width: 280px;
-  height: 250px;
-  background-color: #ed145b;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.controls {
-  width: 430px;
-  height: 250px;
-  padding: 60px;
-  background-color: #f8f6f6;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.input-box {
-  display: flex;
-}
-
-.input-box input {
-  width: 100%;
-  padding: 15px;
-  color: #ed145b;
-  background: transparent;
-  font-size: 22px;
-  font-weight: 600;
-  border: 2px solid #ed145b;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.input-box .copy-btn {
-  padding: 10px 25px;
-  color: #f8f6f6;
-  background-color: #ed145b;
-  font-size: 22px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  cursor: pointer;
-}
-
-.generate-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  color: #f8f6f6;
-  background-color: #000000;
-  font-size: 22px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.copy-btn:active,
-.generate-btn:active {
-  opacity: 0.9;
-}
-
-.alert-msg {
-  width: 400px;
-  padding: 15px;
-  color: #f8f6f6;
-  background-color: #363636;
-  font-size: 20px;
-  font-weight: 400;
-  border-radius: 6px;
+.wrapper .content p {
+  color: white;
   text-align: center;
-  position: fixed;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  font-style: italic;
 }
 
-.alert-msg .code {
-  font-weight: 700;
+.wrapper .button {
+  margin-top: 15px;
 }
-
-.slide-effect {
-  animation: slideInUp 2s ease-in;
+.wrapper .button .btn {
+  background: #fbba08;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1rem;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: 0.3s all ease;
+  letter-spacing: 1px;
+  font-size: 15px;
 }
-
-/* Create a slideInUp animation */
-
-@keyframes slideInUp {
-  0% {
-    opacity: 0;
-    bottom: -100px;
-  }
-  20% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  90% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+.wrapper .button .btn:hover {
+  background: white;
+}/*# sourceMappingURL=style.css.map */
