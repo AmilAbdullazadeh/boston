@@ -1,22 +1,16 @@
-$(document).ready(function () {
+let time = '00:00:00'
 
-    function fetchData() {
-        $.ajax({
-            type: "GET",
-            url: 'https://geek-jokes.sr.website/api?format=json',
-            success: (response, statusText) => {
-                $("#joke").text(response.joke)
-            },
-            failure: (err, statusText) => {
-            },
-            error: (err) => {
-                console.log('err', err)
-            }
-        })
-    }
+function timer() {
+    time = new Date().toLocaleTimeString();
+    document.getElementById("body").innerHTML = '<div >\n' +
+        '<h3>Time:</h3>\n' +
+        '<p>' + time + '</p>\n'
+        '</div>';
+}
 
-    fetchData()
+setInterval(timer, 1000)
 
-    $("#btn").click(fetchData)
-
-});
+html
+  body
+   h3
+   p
