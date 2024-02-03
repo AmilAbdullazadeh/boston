@@ -10,7 +10,11 @@ export class TVShowAPI {
       return response.data.results
     }
 
-    static async tvShowsRecommendations(tv_id) {
+  static async tvShowsRecommendations(tv_id) {
+      const response = await axios(
+        `${BASE_URL}/tv/${tv_id}/recommendations?api_key=${API_KEY}`
+      );
+      return response.data.results
     }
 
     static async tvShowsByTitle(title) {
