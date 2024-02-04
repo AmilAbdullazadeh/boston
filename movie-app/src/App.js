@@ -11,7 +11,7 @@ import s from "./style.module.css";
 
 export function App() {
   const [currentTVShow, setCurrentTVShow] = useState(null)
-  const [tvShowList, setTVShowList] = useState([])
+  const [tvShowList, setTVShowList] = useState(null)
   // tvShowList = []
 
   async function fetchTVShows() {
@@ -27,7 +27,7 @@ export function App() {
   async function fetchRecoTVSHows(id) {
     try {
       const response = await TVShowAPI.tvShowsRecommendations(id)
-      setTVShowList(response)
+      setTVShowList(response.slice(0, 10))
     } catch (err) {
       console.error("Something went wrong !");
     }
@@ -39,10 +39,16 @@ export function App() {
     return () => console.log("Unsubscribe");
   }, []);
 
+    useEffect(() => {
+      if (currentTVShow) {
+        fetchRecoTVSHows(currentTVShow.id)
+      }
+
+      return () => console.log("Unsubscribe");
+    }, [currentTVShow]);
+
   async function updateTVShow(tvShow) {
-    setCurrentTVShow(tvShow); // Set the clicked TV show as the current TV show
-      const recommendations = await TVShowAPI.tvShowsRecommendations(tvShow.id);
-      setTVShowList(recommendations);
+    setCurrentTVShow(tvShow);
   }
 
   return (
@@ -75,7 +81,7 @@ export function App() {
         <div>
           <div className={s.title}>You'll probably like :</div>
           <div className={s.list}>
-            {tvShowList.map((item) => (
+            {tvShowList && tvShowList.map((item) => (
               <span className={s.tv_show_item}>
                 <div className={s.container}>
                   <img
