@@ -1,37 +1,33 @@
 import { useState } from "react";
+import uniqid from "uniqid";
 import { validate } from "./helpers";
 
 function App() {
 
-  const [profileDatas, setProfileDatas] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-    ageRange: '',
-    terms: true
+  const [list, setList] = useState([])
+
+  const [todo, setTodo] = useState({
+    text: '',
+    completed: false,
+    id: 0
   })
 
   const [errors, setErrors] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-    ageRange: "",
-    terms: true,
+    text: ''
   });
 
   const handleChange = (e) => {
     e.preventDefault()
-    const { name, type, checked, value } = e.target;
+    const { name, value } = e.target
 
-    setProfileDatas({
-      ...profileDatas,
-      [name]: type === 'checkbox' ? checked : value
+    setTodo({
+      ...todo,
+      [name]: value
     })
 
     const error = validate(name, value)
 
     setErrors({
-      ...errors,
       [name]: error
     })
 
@@ -40,66 +36,59 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (
-      profileDatas.fullname.length > 0 &&
-      profileDatas.email.length > 0 &&
-      profileDatas.password.length > 0 &&
-      profileDatas.ageRange.length > 0
-    ) {
-      console.log(profileDatas);
+    if (errors.text.length > 0) {
+      alert('Something went wrong')
     } else {
-      console.log("Form is invalid");
+      
+      setList([
+        ...list,
+        {
+          ...todo,
+          id: uniqid(),
+        },
+      ]);
+
+      setTodo({
+        text: "",
+        completed: false,
+      });
     }
 
+  }
+
+  function toggle(id) {
+    const element = list.find(item => item.id === id)
+    element.completed ? element.completed = false : element.completed = true
+    setList([...list])
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="fullname">Fullname: </label>
+        <label htmlFor="text">Todo: </label>
         <input
-          name="fullname"
-          defaultValue={profileDatas.fullname}
-          disabled={profileDatas.terms}
+          name="text"
+          defaultValue={todo.text}
+          value={todo.text}
           onChange={handleChange}
         />
-        {errors.fullname && <p style={{color: 'red'}} >{errors.fullname}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="email">Email</label>
-        <input name="email" onChange={handleChange} />
-        {errors.email && <p style={{color: 'red'}} >{errors.email}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="password">Password</label>
-        <input name="password" type="password" onChange={handleChange} />
-        {errors.password && <p style={{color: 'red'}} >{errors.password}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="ageRange">Age Range</label>
-        <select name="ageRange" onChange={handleChange}>
-          <option value="">Kateqoriya</option>
-          <option value="10-20">10-20</option>
-          <option value="30-40">30-40</option>
-        </select>
-        {errors.ageRange && <p style={{color: 'red'}} >{errors.ageRange}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="terms">Terms</label>
-        <input
-          name="terms"
-          type="checkbox"
-          onChange={handleChange}
-          defaultChecked={profileDatas.terms}
-        />
-        {errors.terms && <p style={{color: 'red'}} >{errors.terms}</p>}
+        {errors.text && <p style={{ color: "red" }}>{errors.text}</p>}
       </div>
 
       <button type="submit">Submit</button>
+
+      {list.map((item) => (
+        <div
+          onClick={() => toggle(item.id)}
+          style={{
+            textDecoration: item.completed ? "line-through" : 'none',
+            opacity: item.completed ? .7 : 1
+          }}
+          key={item.id}
+        >
+          {item.text}
+        </div>
+      ))}
     </form>
   );
 }
