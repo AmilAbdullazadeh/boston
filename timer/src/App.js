@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import uniqid from "uniqid";
 import { validate } from "./helpers";
 
@@ -63,33 +64,33 @@ function App() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="text">Todo: </label>
-        <input
-          name="text"
-          defaultValue={todo.text}
-          value={todo.text}
-          onChange={handleChange}
-        />
-        {errors.text && <p style={{ color: "red" }}>{errors.text}</p>}
-      </div>
-
-      <button type="submit">Submit</button>
-
-      {list.map((item) => (
-        <div
-          onClick={() => toggle(item.id)}
-          style={{
-            textDecoration: item.completed ? "line-through" : 'none',
-            opacity: item.completed ? .7 : 1
-          }}
-          key={item.id}
-        >
-          {item.text}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="text">Todo: </label>
+          <input
+            name="text"
+            defaultValue={todo.text}
+            value={todo.text}
+            onChange={handleChange}
+          />
+          {errors.text && <p style={{ color: "red" }}>{errors.text}</p>}
         </div>
-      ))}
-    </form>
+
+        <button type="submit">Submit</button>
+
+        {list.map((item) => (
+          <div
+            onClick={() => toggle(item.id)}
+            style={{
+              textDecoration: item.completed ? "line-through" : "none",
+              opacity: item.completed ? 0.7 : 1,
+            }}
+            key={item.id}
+          >
+            {item.text}
+          </div>
+        ))}
+      </form>;
   );
 }
 
