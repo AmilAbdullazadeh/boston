@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTodos } from '../../actions';
 import List from '../List';
+import {fetchTodos} from "../../slice/todosSlice";
 
 export default function Display() {
-  const count = useSelector((state) => state.counter.count);
   const { loading, items, error } = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -12,8 +11,8 @@ export default function Display() {
     dispatch(fetchTodos());
   }, [dispatch]);
 
-  if (loading) return <div>Loading ...</div>
-  if (error) return <div>{ error }</div>
+  if (loading) return <div>Loading ...</div>;
+  if (error) return <div>{error}</div>;
 
-  return <List test={items} />;
+  return items.length > 0 ? <List test={items} /> : 'No items found!';
 }
